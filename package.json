@@ -2,6 +2,7 @@
   "name": "royal-recipe",
   "version": "1.0.0",
   "description": "My app description",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
