@@ -1,0 +1,17 @@
+#theBox{
+  width: 350px;
+  background: #8ABD5F;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius:10px;
+  
+}
+
+body{
+  background: #fff8f8;
+}
+#upload{
+  background: #fff8f8;
+  border: 1px solid #3E7213;
+  border-radius: 5px;
+}
