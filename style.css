@@ -1,10 +1,17 @@
+/*this font is from fontsquirrel.com available at:
+ https://www.fontsquirrel.com/fonts/bellota?filter%5Bdownload%5D=local [Accessed on 15/2/17}]*/
+@font-face {
+    font-family: Bellota-Light;
+    src: url("Bellota-Light.otf") format("opentype");
+}
 #theBox{
   width: 350px;
   background: #8ABD5F;
   padding: 10px;
   margin: 0 auto;
   border-radius:10px;
-  
+  color: #224C00;
+  font-family: Arial;
 }
 
 body{
@@ -14,4 +21,12 @@ body{
   background: #fff8f8;
   border: 1px solid #3E7213;
   border-radius: 5px;
+}
+.header {
+  padding: 10px;
+  font-family: Bellota-Light;
+}
+.header, h1, .footer{
+  font-family: Bellota-Light;
+  color: #224C00;
 }
