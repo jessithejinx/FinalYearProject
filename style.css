@@ -41,3 +41,15 @@ footer{
     border-top: 1px solid #224C00;
     width: 100%;
 }
+
+.hidden{
+  display: none;
+}
+
+#output{
+
+}
+
+#failRead{
+  background: cornflowerblue;
+}

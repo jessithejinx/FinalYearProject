@@ -1,0 +1,73 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     vote
+Instances:    435
+Attributes:   17
+              handicapped-infants
+              water-project-cost-sharing
+              adoption-of-the-budget-resolution
+              physician-fee-freeze
+              el-salvador-aid
+              religious-groups-in-schools
+              anti-satellite-test-ban
+              aid-to-nicaraguan-contras
+              mx-missile
+              immigration
+              synfuels-corporation-cutback
+              education-spending
+              superfund-right-to-sue
+              crime
+              duty-free-exports
+              export-administration-act-south-africa
+              Class
+Test mode:    2-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+physician-fee-freeze = n: democrat (253.41/3.75)
+physician-fee-freeze = y
+|   synfuels-corporation-cutback = n: republican (145.71/4.0)
+|   synfuels-corporation-cutback = y
+|   |   mx-missile = n
+|   |   |   adoption-of-the-budget-resolution = n: republican (22.61/3.32)
+|   |   |   adoption-of-the-budget-resolution = y
+|   |   |   |   anti-satellite-test-ban = n: democrat (5.04/0.02)
+|   |   |   |   anti-satellite-test-ban = y: republican (2.21)
+|   |   mx-missile = y: democrat (6.03/1.03)
+
+Number of Leaves  : 	6
+
+Size of the tree : 	11
+
+
+Time taken to build model: 0.02 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances         415               95.4023 %
+Incorrectly Classified Instances        20                4.5977 %
+Kappa statistic                          0.9039
+Mean absolute error                      0.0809
+Root mean squared error                  0.1985
+Relative absolute error                 17.0509 %
+Root relative squared error             40.7651 %
+Total Number of Instances              435     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.948    0.036    0.977      0.948    0.962      0.905    0.974     0.976     democrat
+                 0.964    0.052    0.920      0.964    0.942      0.905    0.974     0.953     republican
+Weighted Avg.    0.954    0.042    0.955      0.954    0.954      0.905    0.974     0.967     
+
+=== Confusion Matrix ===
+
+   a   b   <-- classified as
+ 253  14 |   a = democrat
+   6 162 |   b = republican
+
