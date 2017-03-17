@@ -7,7 +7,7 @@ $(document).ready(function () {
 		var fileInput = document.getElementById('upload');
 		var file = fileInput.files[0];
 		var textType = /text.*/;
-		var contentDiv = document.createElement("pre"); //pre was chosen as data will be preformatted and we want to retain this (at this time**)
+		var contentDiv = document.createElement("div");
 		contentDiv.setAttribute("id", "output");
 		var failReadDiv = document.createElement("div");
 		failReadDiv.setAttribute("id", "failRead");
@@ -18,21 +18,22 @@ $(document).ready(function () {
 
 			reader.onload = function () { //main bulk of function 
 				//console.log (reader.result);
-				myData = reader.result//.split(' '); //splits the file into separate words and adds each word to the array 
-				//console.log(myData[2]+ " " +  myData[1]+ " " + myData[0]); // prints the content of the array backwards 
-				/*var testing = [];
+				myData = reader.result.split(' '); //splits the file into separate words and adds each word to the array 
+				console.log(myData[2]+ " " +  myData[1]+ " " + myData[0]); // prints the content of the array backwards 
+				var testing = [];
 				for (i = myData.length - 1; i >= 0; i--) { //assigning i to the last value in the array, then for every element in the array until index is greater than or equal to 0
 					testing.push(myData[i]); // adds each insatnce of i to an array
 				}
 				var addContent = document.createTextNode(testing);*/
 				var originalText = document.createTextNode(myData);
 				contentDiv.appendChild(originalText);
+				contentDiv.appendChild(addContent);
 				var currentDiv = document.getElementById("theBox");
 				$("#theBox").addClass("hidden"); //hides the form box on submission of file
 				$("#failRead").addClass("hidden"); // hides the failReadDiv when a correct file type is uploaded
-				$("footer").css("position", "static"); //changes the footer position to static, this stops it appearing in the middle of the page
 				document.body.insertBefore(contentDiv, currentDiv);
-				console.log(myData);
+				//console.log(myData);
+				//console.log(testing);
 			}
 
 			reader.readAsText(file);
