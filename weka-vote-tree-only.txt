@@ -1,0 +1,10 @@
+physician-fee-freeze = n: democrat (253.41/3.75)
+physician-fee-freeze = y
+|   synfuels-corporation-cutback = n: republican (145.71/4.0)
+|   synfuels-corporation-cutback = y
+|   |   mx-missile = n
+|   |   |   adoption-of-the-budget-resolution = n: republican (22.61/3.32)
+|   |   |   adoption-of-the-budget-resolution = y
+|   |   |   |   anti-satellite-test-ban = n: democrat (5.04/0.02)
+|   |   |   |   anti-satellite-test-ban = y: republican (2.21)
+|   |   mx-missile = y: democrat (6.03/1.03)

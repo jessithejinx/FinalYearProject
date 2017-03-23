@@ -7,8 +7,8 @@ $(document).ready(function () {
 		var fileInput = document.getElementById('upload');
 		var file = fileInput.files[0];
 		var textType = /text.*/;
-		var contentDiv = document.createElement("pre"); //pre was chosen as data will be preformatted and we want to retain this (at this time**)
-		contentDiv.setAttribute("id", "output");
+		var contentSection = document.createElement("pre"); //pre was chosen as data will be preformatted and we want to retain this (at this time**)
+		contentSection.setAttribute("id", "output");
 		var failReadDiv = document.createElement("div");
 		failReadDiv.setAttribute("id", "failRead");
 
@@ -18,21 +18,26 @@ $(document).ready(function () {
 
 			reader.onload = function () { //main bulk of function 
 				//console.log (reader.result);
-				myData = reader.result//.split(' '); //splits the file into separate words and adds each word to the array 
-				//console.log(myData[2]+ " " +  myData[1]+ " " + myData[0]); // prints the content of the array backwards 
-				/*var testing = [];
-				for (i = myData.length - 1; i >= 0; i--) { //assigning i to the last value in the array, then for every element in the array until index is greater than or equal to 0
-					testing.push(myData[i]); // adds each insatnce of i to an array
+				myData = reader.result.split(/\r|\n/); //splits the file into separate lines and adds each line to the array 
+				var startLine = myData.indexOf("J48 pruned tree");
+				var endLine = myData.indexOf("=== Stratified cross-validation ===");
+				var theTree = [];
+				for (i = startLine +3; i <= endLine -8; i++) { //assigning i to the line I want to start reading, then for every element in the array until index is equal to the end line -8
+					theTree.push(myData[i]); // adds each insatnce of i to an array
 				}
-				var addContent = document.createTextNode(testing);*/
-				var originalText = document.createTextNode(myData);
-				contentDiv.appendChild(originalText);
+				var addContent = document.createTextNode(theTree); //turns the decision tree section into a node 
+				//var originalText = document.createTextNode(myData);
+				//contentSection.appendChild(originalText);
+				contentSection.appendChild(addContent); //adds the decision tree node to the new section 
 				var currentDiv = document.getElementById("theBox");
 				$("#theBox").addClass("hidden"); //hides the form box on submission of file
 				$("#failRead").addClass("hidden"); // hides the failReadDiv when a correct file type is uploaded
 				$("footer").css("position", "static"); //changes the footer position to static, this stops it appearing in the middle of the page
-				document.body.insertBefore(contentDiv, currentDiv);
-				console.log(myData);
+				document.body.insertBefore(contentSection, currentDiv);
+				//console.log(startLine);
+				//console.log(endLine);
+				//console.log(myData);
+				console.log(theTree);
 			}
 
 			reader.readAsText(file);

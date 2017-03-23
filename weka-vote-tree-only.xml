@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DecisionTree type="weka-vote-tree-only">
+	<Test attribute="physician-fee-freeze" operator="=" value="n">
+		<Output decision="democrat" info="(253.41/3.75)"/>
+	</Test>
+	<Test attribute="physician-fee-freeze" operator="=" value="y">
+		<Test attribute="synfuels-corporation-cutback" operator="=" value="n">
+			<Output decision="republican" info="(145.71/4.0)"/>
+		</Test>
+		<Test attribute="synfuels-corporation-cutback" operator="=" value="y">
+			<Test attribute="mx-missile" operator="=" value="n">
+				<Test attribute="adoption-of-the-budget-resolution"
+					operator="=" value="n">
+					<Output decision="republican" info="(22.61/3.32)"/>
+				</Test>
+				<Test attribute="adoption-of-the-budget-resolution"
+					operator="=" value="y">
+					<Test attribute="anti-satellite-test-ban"
+						operator="=" value="n">
+						<Output decision="democrat" info="(5.04/0.02)"/>
+					</Test>
+					<Test attribute="anti-satellite-test-ban"
+						operator="=" value="y">
+						<Output decision="republican" info="(2.21)"/>
+					</Test>
+				</Test>
+			</Test>
+			<Test attribute="mx-missile" operator="=" value="y">
+				<Output decision="democrat" info="(6.03/1.03)"/>
+			</Test>
+		</Test>
+	</Test>
+</DecisionTree>
