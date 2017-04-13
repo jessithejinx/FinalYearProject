@@ -17,36 +17,79 @@ $(document).ready(function () {
 			var reader = new FileReader();
 
 			reader.onload = function () { //main bulk of function 
-				//console.log (reader.result);
-				myData = reader.result.split(/\r|\n/); //splits the file into separate lines and adds each line to the array 
-				var startLine = myData.indexOf("J48 pruned tree");
-				var endLine = myData.indexOf("=== Stratified cross-validation ===");
-				var theTree = [];
-				for (i = startLine +3; i <= endLine -8; i++) { //assigning i to the line I want to start reading, then for every element in the array until index is equal to the end line -8
-					theTree.push(myData[i]); // adds each insatnce of i to an array
-				}
-				var addContent = document.createTextNode(theTree); //turns the decision tree section into a node 
-				//var originalText = document.createTextNode(myData);
-				//contentSection.appendChild(originalText);
-				contentSection.appendChild(addContent); //adds the decision tree node to the new section 
-				var currentDiv = document.getElementById("theBox");
+				var myData = reader.result.split(',');
+
+				console.log(myData);
+			
+				//var addContent = document.createTextNode(theTree); //turns the decision tree section into a node 
+				//contentSection.appendChild(addContent); //adds the decision tree node to the new section 
+				//var currentDiv = document.getElementById("theBox");
 				$("#theBox").addClass("hidden"); //hides the form box on submission of file
 				$("#failRead").addClass("hidden"); // hides the failReadDiv when a correct file type is uploaded
 				$("footer").css("position", "static"); //changes the footer position to static, this stops it appearing in the middle of the page
-				document.body.insertBefore(contentSection, currentDiv);
-				//console.log(startLine);
-				//console.log(endLine);
-				//console.log(myData);
-				console.log(theTree);
-			}
+				//document.body.insertBefore(contentSection, currentDiv);
+				//console.log(theTree);
 
+				/*var treeRoot = myData[0];
+				console.log("first entry is "+ myData[0]);			
+				console.log(treeRoot);
+				var tree = {
+				text: {name: treeRoot},
+				children: []
+				};*/
+			
+				config = {  //insert code here
+					container: "#tree-simple"
+				};
+				parent_node = {
+					text: { name: myData[0] }
+				};
+				first_child = {
+					parent: parent_node,
+					text: { name: myData[3] }
+				};
+				second_child = {
+					parent: parent_node,
+					text: { name: myData[6] }
+				};
+				simple_chart_config = [
+					config, parent_node,
+					first_child, second_child
+				];
+				var my_chart = new Treant(simple_chart_config);
+			}
+			
+			// below loops through every branch associated with the parent node
+			/*for (var i = 0; i < myData[1].length; i++){
+			//console.log(data[1][i]); //these are the choices for the parent 
+			//need to build json node structure and set root node
+			var branchLabel = myData[1][i][1]; // this is identifying the decision that leads to the new node
+			var nodeLabel = myData[1][i][2]; //this is the data that needs to be pushed to the node
+			console.log(nodeLabel);
+			if (!Array.isArray(nodeLabel)) { //check if the node is leaf or a decision
+				var jsonNode = { //builds the json to add to our structure
+				text: {name:nodeLabel}
+				};
+				tree.children.push(jsonNode); //this is adding the json to the structure as a child
+			}
+			 */
+
+			/*simple_chart_config = { this initialises the library when we have the right format 
+				chart: {
+					container: "#tree-simple"
+				},
+				
+				nodeStructure: tree 
+				
+			};
+			var my_chart = new Treant(simple_chart_config);*/
+			
 			reader.readAsText(file);
 		} else {
 			var failedRead = document.createTextNode("File not supported! Please Choose a .txt file");
 			failReadDiv.appendChild(failedRead);
 			var currentDiv = document.getElementById("theBox");
 			document.body.insertBefore(failReadDiv, currentDiv);
-			//console.log("File not supported!");
-		}
+		  }
 	});
 });

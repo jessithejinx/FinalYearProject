@@ -1,0 +1,58 @@
+ {
+	'node': {
+   		'test value': '=n',
+		'attribute': 'physician-fee-freeze',
+		'decision':'democrat'
+	},
+	'node': {
+		'test value': "=y",
+		'attribute': "physician-fee-freeze",
+	  	'decision': [
+			{'node': {
+				'test value': '=n',
+				'attribute': 'synfuels-corporation-cutback' ,
+				'decision':'republican'
+			}},
+			{'node': {
+				'test value': '=y',
+				'attribute': 'synfuels-corporation-cutback' ,
+				'decision':[{
+					{'nodes': {
+						'test value': '=n',
+						'attribute': 'mx-missile' ,
+						'decision':[{
+							{'node': {
+								'test value': '=n',
+								'attribute': 'adoption-of-the-budget-resolution' ,
+								'decision':'republican'
+							}},
+							{'node' :{
+								'test value': '=y',
+								'attribute': 'adoption-of-the-budget-resolution' ,
+								'decision': [{
+									{'node':{
+										'test value': '=n',
+										'attribute': 'anti-satellite-test-ban' ,
+										'decision':'democrat'
+									}},
+									{'node':{
+										'test value': '=y',
+										'attribute': 'anti-satellite-test-ban' ,
+										'decision':'republican'
+									}}
+								}]
+							}}
+						}]
+					
+					}},
+					{'node':{
+						'test value': '=y',
+						'attribute': 'adoption-of-the-budget-resolution' ,
+						'decision':'democrat'
+					}
+				}]
+			},
+		}]
+	  
+	}
+ }

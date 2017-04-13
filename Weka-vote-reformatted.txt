@@ -1,0 +1,1 @@
+["physician-fee-freeze", [["=", "n", "democrat"], ["=", "y", ["synfuels-corporation-cutback", [["=", "n", "republican"], ["=", "y", ["mx-missile", [["=", "n", ["adoption-of-the-budget-resolution", [["=", "n", "republican"], ["=", "y", ["anti-satellite-test-ban", [["=", "n", "democrat"], ["=", "y", "republican"]]]]]]], ["=", "y", "democrat"]]]]]]]]]
