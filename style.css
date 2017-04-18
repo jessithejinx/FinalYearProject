@@ -31,10 +31,11 @@ body{
   border-bottom: 1px solid #224C00;
   width: 100%;
 }
-.header, h1, footer{
+.header, #home, h2, footer{
   font-family: Bellota-Light;
   color: #224C00;
 }
+
 footer{
     position: absolute;
     bottom: 0;
@@ -46,10 +47,17 @@ footer{
   display: none;
 }
 
-#output{
-
+#zoomOut-button{
+  height: 100px;
+  width: 100px;
 }
 
 #failRead{
-  background: cornflowerblue;
+  font-family: Bellota-Light;
+  font-size: 50px;
+  padding-bottom: 25px;
+}
+
+a{
+  color:#224C00;
 }
