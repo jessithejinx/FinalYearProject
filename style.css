@@ -47,6 +47,10 @@ footer{
   display: none;
 }
 
+.visible{
+  display: inline;
+}
+
 #zoomOut-button{
   height: 100px;
   width: 100px;

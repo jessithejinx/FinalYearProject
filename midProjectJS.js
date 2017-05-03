@@ -24,7 +24,7 @@ $(document).ready(function () {
 				for (i = myData.length - 1; i >= 0; i--) { //assigning i to the last value in the array, then for every element in the array until index is greater than or equal to 0
 					testing.push(myData[i]); // adds each insatnce of i to an array
 				}
-				var addContent = document.createTextNode(testing);*/
+				var addContent = document.createTextNode(testing);
 				var originalText = document.createTextNode(myData);
 				contentDiv.appendChild(originalText);
 				contentDiv.appendChild(addContent);

@@ -9,7 +9,8 @@
   <script type="text/javascript" src="raphael.js"></script>
   <script type="text/javascript" src="Treant.js"></script>
   <script type="text/javascript" src="dom-to-image.js"></script> <!--3rd party libray for converting an element to an image -->
-  <script type="text/javascript" src="script.js"></script>
+ <script type="text/javascript" src="script.js"></script>
+ <!-- <script type="text/javascript" src="midProjectJS.js"></script> -->
   <!-- imports the stylesheet, js and jquery -->
   <title>Decision Tree Generator</title>
 </head>
@@ -30,7 +31,12 @@
       <input type="submit" id="submit"></input>
     </div>
   </div>
-    <div id="tree-simple"> 
+  <div id="tree-simple"> 
+  </div>
+  <div id ="button-div", class = "hidden">
+      <button type="button", id= "button">Download</button>
+      <button type="button", id = "zoomInButton">+</button>
+      <button type="button", id = "zoomOutButton">-</button>
   </div>
   <footer>
     <p>Aberystwyth University: Jessica Rocton, Final Year Project.</p>

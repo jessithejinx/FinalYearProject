@@ -6,25 +6,20 @@ $(document).ready(function () {
 		var fileInput = document.getElementById('upload');
 		var file = fileInput.files[0];
 		var textType = /text.*/;
-		//var contentSection = document.createElement("pre");
-		//contentSection.setAttribute("id", "output");
 		var failReadDiv = document.createElement("div");
 		failReadDiv.setAttribute("id", "failRead");
 
 
-		if (file.type.match(textType)) { //download function adapted from: http://codepen.io/matt-west/pen/KjEHg [Accessed 16/2/17]
+		if (file.type.match(textType)) { //read in function adapted from: http://codepen.io/matt-west/pen/KjEHg [Accessed 16/2/17]
 			var reader = new FileReader();
 
 			reader.onload = function () { //main bulk of function 
 				myData = reader.result.split(','); //splits the file on each "," and adds to the array
 
 				console.log(myData);
-			
-				//var addContent = document.createTextNode(theTree); //turns the decision tree section into a node 
-				//contentSection.appendChild(addContent); //adds the decision tree node to the new section 
-				//var currentDiv = document.getElementById("theBox");
 				$("#theBox").addClass("hidden"); //hides the form box on submission of file
 				$("#failRead").addClass("hidden"); // hides the failReadDiv when a correct file type is uploaded
+				$("#button-div").addClass("visible");
 				$("footer").css("position", "static"); //changes the footer position to static, this stops it appearing in the middle of the page
 				
 				
@@ -52,17 +47,7 @@ $(document).ready(function () {
 		
 			//below section takes an element and converts it to an image, code can be found at: https://github.com/tsayen/dom-to-image [Accessed 18/4/17]
 			//the purpose would be to make it easier for the zoom and download to function 
-				var node = document.getElementById('tree-simple');
-
-					domtoimage.toPng(node)
-						.then(function (dataUrl) {
-							var img = new Image();
-							img.src = dataUrl;
-							document.body.appendChild(img);
-						})
-						.catch(function (error) {
-							console.error('oops, something went wrong!', error);
-						});
+				
 			//the below section of code creates the zoom funcation and buttons
 			//function zoom can be found at: http://www.webdeveloper.com/forum/showthread.php?256121-Simple-Image-Zoom-In-Out  [Accessed 17/4/17 ]
 				function zoom(zm) {
@@ -75,15 +60,6 @@ $(document).ready(function () {
 				img.style.marginTop = -(img.height/2) + "px";
 				}	
 		
-				var zoomOutButton = document.createElement("button", {id: "zoomOutbutton"}); 
-				var newContent = document.createTextNode(value ="-");
-				var zoomInButton = document.createElement("button", {id: "zoomInbutton"}); 
-				var newContent2 = document.createTextNode("+");
-				zoomInButton.appendChild(newContent);
-				zoomOutButton.appendChild(newContent2);
-				var currentDiv = document.getElementById("tree-simple"); 
-				document.body.insertBefore(zoomInButton, currentDiv);
-				document.body.insertBefore(zoomOutButton, currentDiv);
 				zoomInButton.onclick = function(){
 					zoom(1.1);
 				};
@@ -91,16 +67,6 @@ $(document).ready(function () {
 					zoom(0.9);
 				};
 
-				//the below section creates the download button
-				var downloadButton = document.createElement("img", {id: "downloadButton"});
-				var newContent3 = document.createTextNode("download");
-				downloadButton.src ="download_button.png"; //button image found at: https://www.curveexpert.net/download/ [Accessed 17/4/17]
-				downloadButton.style ="height: 75px"; 
-				downloadButton.appendChild(newContent3);
-				document.body.insertBefore(downloadButton, currentDiv);
-				downloadButton.onclick = function(){ 
-					document.getElementById("tree-simple").download = "J48 Tree Image Conversion";
-				}
 			
 			//The below code shows my attempted next steps of changing the file to json from an array and applying it for use with the treant library
 			/*var treeRoot = myData[0];
@@ -133,6 +99,7 @@ $(document).ready(function () {
 				
 			};
 			var my_chart = new Treant(simple_chart_config);*/
+
 			reader.readAsText(file);
 		} else {
 			var failedRead = document.createTextNode("File not supported! Please Choose a .txt file");
@@ -141,4 +108,18 @@ $(document).ready(function () {
 			document.body.insertBefore(failReadDiv, currentDiv);
 		  }
 	});
+			//download function implementing the DOM-to-image library
+
+						$("#button").on("click", function () {
+							console.log("click");
+						var node = document.getElementById('tree-simple');
+							domtoimage.toJpeg(document.getElementById('tree-simple'), { quality: 0.95 })
+								.then(function (dataUrl) {
+									var link = document.createElement('a');
+									link.download = 'J48 Converted Tree.jpeg';
+									link.href = dataUrl;
+									link.click();
+						});
+
+				})
 });
