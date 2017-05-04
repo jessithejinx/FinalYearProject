@@ -14,7 +14,8 @@ $(document).ready(function () {
 			var reader = new FileReader();
 
 			reader.onload = function () { //main bulk of function 
-				myData = reader.result.split(','); //splits the file on each "," and adds to the array
+				myData = reader.result.replace(/\[/g,'').replace(/\]/g,'').replace(/\"/g,''); // removes unwanted characters
+				myData = myData.split(','); //splits the file on each "," and adds to the array
 
 				console.log(myData);
 				$("#theBox").addClass("hidden"); //hides the form box on submission of file
@@ -38,9 +39,17 @@ $(document).ready(function () {
 					parent: parent_node,
 					text: { name: myData[6] }
 				};
+				Third_child = {
+					parent: second_child,
+					text: { name: myData[9] }
+				};
+				fourth_child = {
+					parent: second_child,
+					text: { name: myData[12] }
+				};
 				simple_chart_config = [
 					config, parent_node,
-					first_child, second_child
+					first_child, second_child, Third_child, fourth_child
 				];
 				var my_chart = new Treant(simple_chart_config);
 			}
@@ -108,7 +117,7 @@ $(document).ready(function () {
 			document.body.insertBefore(failReadDiv, currentDiv);
 		  }
 	});
-			//download function implementing the DOM-to-image library
+			//download as JPEG function implementing the DOM-to-image library
 
 						$("#button").on("click", function () {
 							console.log("click");
@@ -122,4 +131,16 @@ $(document).ready(function () {
 						});
 
 				})
+
+					$("#button2").on("click", function () {
+						console.log("click");
+					domtoimage.toBlob(document.getElementById('tree-simple'))
+					.then(function (blob){
+							saveAs(blob, 'J48 Converted Tree.png');
+					})
+
+				})
+				
+
+				
 });

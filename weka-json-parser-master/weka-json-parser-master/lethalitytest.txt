@@ -1,0 +1,41 @@
+J48 pruned tree
+------------------
+
+GO:0001707 = 1: lethal (85.0/3.0)
+GO:0001707 = 0
+|   GO:0048663 = 1: lethal (83.0/3.0)
+|   GO:0048663 = 0
+
+Number of Leaves  : 	86
+
+Size of the tree : 	171
+
+
+Time taken to build model: 1098.01 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        7483               66.5807 %
+Incorrectly Classified Instances      3756               33.4193 %
+Kappa statistic                          0.3318
+Mean absolute error                      0.4052
+Root mean squared error                  0.4687
+Relative absolute error                 81.0343 %
+Root relative squared error             93.7434 %
+Coverage of cases (0.95 level)          99.8398 %
+Mean rel. region size (0.95 level)      74.2904 %
+Total Number of Instances            11239     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0.684    0.353    0.657      0.684    0.670      0.332    0.713     0.662     viable
+                 0.647    0.316    0.675      0.647    0.661      0.332    0.713     0.720     lethal
+Weighted Avg.    0.666    0.334    0.666      0.666    0.666      0.332    0.713     0.691     
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 3821 1762 |    a = viable
+ 1994 3662 |    b = lethal

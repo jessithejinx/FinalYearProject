@@ -101,6 +101,7 @@ def parse_tree(lines):
         while current_index[0] < len(lines):
             line = lines[current_index[0]]
             depth, feature, comparator, value, classif = parse_line(line)
+			print depth
             if depth < current_depth:
                 # Finished parsing this node.
                 break
