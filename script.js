@@ -25,7 +25,7 @@ $(document).ready(function () {
 				
 				
 			
-				config = {  //insert code here
+				config = { 
 					container: "#tree-simple"
 				};
 				parent_node = {
@@ -47,34 +47,37 @@ $(document).ready(function () {
 					parent: second_child,
 					text: { name: myData[12] }
 				};
+				fifth_child = {
+					parent: fourth_child,
+					text: { name: myData[15] }
+				};
+				sixth_child = {
+					parent: fourth_child,
+					text: { name: myData[30] }
+				};
+				seventh_child = {
+					parent: fifth_child,
+					text: { name: myData[18] }
+				};
+				eigth_child = {
+					parent: fifth_child,
+					text: { name: myData[21] }
+				};
+				ninth_child = {
+					parent: eigth_child,
+					text: { name: myData[24] }
+				};
+				tenth_child = {
+					parent: eigth_child,
+					text: { name: myData[27] }
+				};
 				simple_chart_config = [
 					config, parent_node,
-					first_child, second_child, Third_child, fourth_child
+					first_child, second_child, Third_child, fourth_child, fifth_child, sixth_child, seventh_child, eigth_child, ninth_child, tenth_child
 				];
 				var my_chart = new Treant(simple_chart_config);
 			}
-		
-			//below section takes an element and converts it to an image, code can be found at: https://github.com/tsayen/dom-to-image [Accessed 18/4/17]
-			//the purpose would be to make it easier for the zoom and download to function 
-				
-			//the below section of code creates the zoom funcation and buttons
-			//function zoom can be found at: http://www.webdeveloper.com/forum/showthread.php?256121-Simple-Image-Zoom-In-Out  [Accessed 17/4/17 ]
-				function zoom(zm) {
-				var img=document.getElementById("tree-simple")
-				var wid=img.width
-				var ht=img.height
-				img.style.width=(wid*zm)+"px"
-				img.style.height=(ht*zm)+"px"
-				img.style.marginLeft = -(img.width/2) + "px";
-				img.style.marginTop = -(img.height/2) + "px";
-				}	
-		
-				zoomInButton.onclick = function(){
-					zoom(1.1);
-				};
-				zoomOutButton.onclick = function(){
-					zoom(0.9);
-				};
+					
 
 			
 			//The below code shows my attempted next steps of changing the file to json from an array and applying it for use with the treant library

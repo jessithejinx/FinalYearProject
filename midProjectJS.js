@@ -17,8 +17,8 @@ $(document).ready(function () {
 			var reader = new FileReader();
 
 			reader.onload = function () { //main bulk of function 
-				//console.log (reader.result);
-				myData = reader.result.split(' '); //splits the file into separate words and adds each word to the array 
+				console.log (reader.result);
+				/*myData = reader.result.split(' '); //splits the file into separate words and adds each word to the array 
 				console.log(myData[2]+ " " +  myData[1]+ " " + myData[0]); // prints the content of the array backwards 
 				var testing = [];
 				for (i = myData.length - 1; i >= 0; i--) { //assigning i to the last value in the array, then for every element in the array until index is greater than or equal to 0
@@ -33,7 +33,7 @@ $(document).ready(function () {
 				$("#failRead").addClass("hidden"); // hides the failReadDiv when a correct file type is uploaded
 				document.body.insertBefore(contentDiv, currentDiv);
 				//console.log(myData);
-				//console.log(testing);
+				//console.log(testing);*/
 			}
 
 			reader.readAsText(file);
