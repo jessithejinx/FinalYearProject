@@ -43,6 +43,14 @@ footer{
     width: 100%;
 }
 
+#aboutFooter{
+    position: static;
+    bottom: 0;
+    border-top: 1px solid #224C00;
+    width: 100%;
+    margin-top: 20px;
+}
+
 .hidden{
   display: none;
 }
