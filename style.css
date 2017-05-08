@@ -14,6 +14,16 @@
   font-family: Arial;
 }
 
+#aboutTheBox{
+  width: 600px;
+  background: #8ABD5F;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius:10px;
+  color: #224C00;
+  font-family: Arial;
+}
+
 body{
   background: #fff8f8;
 }
